@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Card } from '@mui/material';
 
-function App() {
+import { LayoutBox } from './components/layout';
+import { Advertising } from './containers/advertising';
+import { Scanning } from './containers/scanning';
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <LayoutBox>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateRows: 'max-content 1fr',
+          gap: '20px 50px',
+          width: '1000px',
+        }}
+      >
+        <Box sx={{ gridColumn: 1 }}>
+          <Scanning />
+        </Box>
 
-export default App;
+        <Box sx={{ gridColumn: 1 }}>
+          <Advertising />
+        </Box>
+
+        <Card sx={{ gridColumn: 2, gridRow: 2 }}></Card>
+      </Box>
+    </LayoutBox>
+  );
+};
